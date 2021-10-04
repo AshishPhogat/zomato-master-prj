@@ -27,6 +27,19 @@ UserSchema.statics.findByemailandPhone = async({email,phoneNumber}) =>{
     return false;
 }
 
+UserSchema.statics.findByemailandPassword = async({email,password})=>{
+        //check whether email exists
+    const user= await UserModel.findOne({email});
+    if(!user) throw new Error("User does not exists!!");
+
+    //compare password
+    const doesPasswordMatch = await bcrypt.compare(password,user.password);
+    
+    if(!doesPasswordMatch) throw new Error("invalid Password!");
+
+    return user;
+
+}
 
 UserSchema.methods.generateJwtToken= function(){
     return jwt.sign({user : this._id.toString()},"ZOMATOAPP");

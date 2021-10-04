@@ -9,9 +9,9 @@ import { FoodModel } from "./food";
 export {
 UserModel,
 ReviewModel,
-RestaurantModel,
 MenuModel,
 ImageModel,
 OrderModel,
-FoodModel
+RestaurantModel,
+FoodModel,
 };

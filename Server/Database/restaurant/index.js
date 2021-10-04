@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const RestaruantSchema = new mongoose.Schema({
-    name : {type : string ,required : true },
-    city  : {type : string ,required : true },
-    address : {type : string ,required : true },
-    mapLocation  : {type : string ,required : true },
+    name : {type : String ,required : true },
+    city  : {type : String ,required : true },
+    address : {type : String ,required : true },
+    mapLocation  : {type : String ,required : true },
     cuisine : [String],
     restaurantTimings : String,
     contactNumbe : Number ,
@@ -27,4 +27,4 @@ const RestaruantSchema = new mongoose.Schema({
         timestamps: true ,   
     });
 
-export const RestaurantModel = mongoose.Model("Restaurants",RestaruantSchema);
+export const RestaurantModel = mongoose.model("Restaurants",RestaruantSchema);
