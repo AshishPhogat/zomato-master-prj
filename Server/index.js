@@ -6,7 +6,6 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import passport from "passport";
-
 // configs
 import googleAuthConfig from "./config/google.config";
 
@@ -15,6 +14,8 @@ import Auth from "./API/Auth";
 import Restaurant from "./API/Restaurant";
 import Foods from "./API/Food";
 import Image from "./API/Image";
+import Reviews from "./API/Reviews";
+import User from "./API/User";
 
 // Database connection
 import ConnectDB from "./database/connection";
@@ -37,6 +38,8 @@ zomato.use("/auth", Auth);
 zomato.use("/restaurant",Restaurant);
 zomato.use("/foods",Foods);
 zomato.use("/image",Image);
+zomato.use("/reviews",Reviews);
+zomato.use("/user",User);
 
 
 zomato.get("/", (req, res) => res.json({ message: "Setup success" }));
