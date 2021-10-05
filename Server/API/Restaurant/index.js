@@ -32,7 +32,7 @@ Params    id
 Access    Public
 Method    GET  
 */
-Router.get("/:_id",(req,res)=>{
+Router.get("/:_id",async (req,res)=>{
     try{
         const {_id} = req.params;
         const restaurant = await RestaurantModel.findOne(_id);
