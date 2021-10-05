@@ -11,11 +11,11 @@ import googleAuthConfig from "./config/google.config";
 
 // microservice routes
 import Auth from "./API/Auth";
-import Restaurant from "./API/Restaurant";
+import Restaurants from "./API/Restaurant";
 import Foods from "./API/Food";
-import Image from "./API/Image";
+import Images from "./API/Image";
 import Reviews from "./API/Reviews";
-import User from "./API/User";
+import Users from "./API/User";
 
 // Database connection
 import ConnectDB from "./database/connection";
@@ -35,11 +35,11 @@ googleAuthConfig(passport);
 
 // Application Routes
 zomato.use("/auth", Auth);
-zomato.use("/restaurant",Restaurant);
+zomato.use("/restaurant",Restaurants);
 zomato.use("/foods",Foods);
-zomato.use("/image",Image);
+zomato.use("/image",Images);
 zomato.use("/reviews",Reviews);
-zomato.use("/user",User);
+zomato.use("/user",Users);
 
 
 zomato.get("/", (req, res) => res.json({ message: "Setup success" }));

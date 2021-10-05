@@ -35,20 +35,24 @@ Body        user Data
 Access    Public
 Method    PUT 
 */
-Router.put("/update/:_id",(req,res)=>{
+Router.put("/update/:_id",async (req,res)=>{
     try{
         const {_id } = req.params;
         const {userData} = req.body;
 
         const updatedUserData = await UserModel.findByIdAndUpdate(_id,
             {
-            $set : userData,   
-            },{
-            new : true,
-        });
+                $set : userData,
+            },
+            {
+                new : true,
+            }
+        )
         return res.json({updatedUserData});
     }catch(error){
         return res.status(500).json({error : error.message});
     }
-} )
+} );
+
+
 export default Router;
