@@ -3,7 +3,7 @@ import express from "express";
 import passport from "passport";
 
 //Database
-import {FoodModel} from "../../Database/allModels";
+import {FoodModel} from "../../Database/food";
 
 //validation
 import { validateRestaurantId,validateCategory } from "../../Validation/food";
@@ -20,7 +20,7 @@ Router.get("/r/:_id",async (req,res)=>{
     try{
         //validating the id.
         await validateRestaurantId(req.params);
-        
+
         const { _id} = req.params;
 
         const foods = await FoodModel.find({restaurant : _id});

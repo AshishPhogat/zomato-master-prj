@@ -4,7 +4,7 @@ import { get } from "mongoose";
 import passport from "passport";
 
 //Database
-import {OrderModel} from "../../Database/allModels";
+import {OrderModel} from "../../Database/orders";
 
 const Router = express.Router();
 
@@ -16,7 +16,7 @@ Params    _id
 Access    Public
 Method    GET  
 */
-Router.get("/:_id",async (req,res)=>{
+Router.get("/:_id",passort.authenticate("jwt",{session: false}),async (req,res)=>{
     try{
         const {_id} = req.params;
         const getOrders = await OrderModel.findOne({users : _id});

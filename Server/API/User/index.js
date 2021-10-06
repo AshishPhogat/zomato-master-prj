@@ -3,7 +3,7 @@ import express from "express";
 import passport from "passport";
 
 //Database
-import {UserModel} from "../../Database/allModels";
+import {UserModel} from "../../Database/user";
 
 const Router = express.Router();
 
