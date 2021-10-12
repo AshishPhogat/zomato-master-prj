@@ -8,9 +8,13 @@ import HomeLayout from "../Layout/home.layout";
 const HomeLayoutHOC = ({component:Component,...rest})=>{
     return <>
     <Route {...rest} component={(props)=>{
-        <HomeLayout>
-        <Component {...props} />
-        </HomeLayout>
+       return (
+            <>
+                <HomeLayout>
+                <Component {...props} />
+                </HomeLayout>
+            </>
+       );
     }}/>
      </>
 };
