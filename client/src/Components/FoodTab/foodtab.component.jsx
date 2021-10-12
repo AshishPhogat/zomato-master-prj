@@ -62,28 +62,67 @@ const MobileTab = ()=>{
 }
 
 const LargetTab = ()=>{
+
+    const [allTypes, setAllTypes ] = useState([{
+        id:"delivery",
+        name :"Delivery",
+        isActive : false,
+        activeColor:"yellow",
+        activeImg:"https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png",
+        inactiveImg:"https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png",
+    },{
+        id:"diningOut",
+        name :"Dining Out",
+        isActive : false,
+        activeColor:"blue",
+        activeImg:"https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png",
+        inactiveImg:"https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png",
+    },{
+        id:"nightLife",
+        name :"Nightlife",
+        isActive : false,
+        activeColor:"purple",
+        activeImg:"https://b.zmtcdn.com/data/o2_assets/855687dc64a5e06d737dae45b7f6a13b1616149818.png",
+        inactiveImg:"https://b.zmtcdn.com/data/o2_assets/01040767e4943c398e38e3592bb1ba8a1616150142.png",
+    },
+]); 
+
+    const {type } = useParams();
+
+    useEffect(()=>{
+        if(type){
+            const updateTypes = allTypes.map((item)=>{
+                item.isActive = false;
+                if(type === item.id){
+                    return {...item,isActive : true};
+                }
+                return item;
+            });
+    
+            setAllTypes(updateTypes);
+        }
+    },[type]);
+
     return<>
         <div className=" hidden  lg:flex gap-14 container px-20 mx-auto">
-                <div className="flex items-center gap-3">
-                    <div className="w-16 h-16 p-4 bg-gray-100 rounded-full">
-                        <img className="w-full h-full " src="https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png" alt="delivery" />
-                    </div>
-                    <h3 className="text-xl text-gray-500 font-medium">Delivery</h3>
-                </div>
                 
-                <div className="flex items-center gap-3">
-                    <div className="w-16 h-16 p-4 bg-gray-100 rounded-full">
-                        <img className="w-full h-full " src="https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png" alt="delivery" />
-                    </div>
-                    <h3 className="text-xl text-gray-500 font-medium">Dining Out</h3>
-                </div>
-
-                <div className="flex items-center gap-3">
-                    <div className="w-16 h-16 p-4 bg-gray-100 rounded-full">
-                        <img className="w-full h-full " src="https://b.zmtcdn.com/data/o2_assets/01040767e4943c398e38e3592bb1ba8a1616150142.png" alt="delivery" />
-                    </div>
-                    <h3 className="text-xl text-gray-500 font-medium">Nightlife</h3>
-                </div>
+                
+                {
+                    allTypes.map((item)=>{
+                        return (
+                            <>
+                               <Link to={item.id}>
+                                    <div className={`flex items-center gap-3 ${item.isActive && "border-b-2 border-zomato-300 w-full ease-in duration-100"}`}>
+                                    <div className={`w-16 h-16 p-4 ${item.isActive ? "relative" : ""} bg-${item.isActive ? item.activeColor : "gray"}-100 rounded-full`}>
+                                        <img className="w-full h-full " src={item.isActive?`${item.activeImg}`:`${item.inactiveImg}`} alt="delivery" />
+                                    </div>
+                                    <h3 className={`text-xl text-${item.isActive ?"zomato" :"gray"}-400 font-normal`}>{item.name}</h3>
+                                    </div>
+                               </Link>
+                            </>
+                        );
+                    })
+                }
                             
         </div>    
     </>
