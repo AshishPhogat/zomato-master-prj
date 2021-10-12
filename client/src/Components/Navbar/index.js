@@ -6,12 +6,13 @@ import { BsSearch } from "react-icons/bs";
 
 const MobileNav = ()=>{
     return <>
-        <div className="flex w-full items-center justify-between lg:hidden ">
-            <div className="pl-3 w-24 h-5">
-                <img className="w-full h-full" src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" alt="logo" />
-        </div>
-            <div className="flex gap-2">
-                <button className="text-sm text-white bg-zomato-400 p-1 rounded-full">Use App</button>
+        <div className=" flex items-center justify-between  lg:hidden ">
+            <div className=" w-24 h-5">
+                    <img className="w-full h-full" src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" alt="logo" />
+            </div>
+
+            <div className="flex items-center gap-2">
+                <button className="text-sm text-white bg-zomato-400 p-1 md:p-2 rounded-full">Use App</button>
                 <span><FaUserAlt className="text-3xl text-zomato-400 border-gray-300 border-2 p-1 rounded-full"  /></span>
             </div>
         </div>
@@ -20,12 +21,10 @@ const MobileNav = ()=>{
 
 const LargeNav = ()=>{
     return <>  
-            <div className="container mx-auto px-20">
-                <div className=" hidden w-full  md:px-4  lg:flex lg:items-center lg:gap-3">
-                    <div className="">
-                            <div className="pl-3 w-36 h-8 ">
-                                    <img className="w-full h-full" src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" alt="logo" />
-                            </div>
+            <div className=" hidden lg:block lg:container lg:mx-auto lg:px-20">
+                <div className=" w-full flex items-center justify-between px-4 gap-1  ">
+                    <div className="pl-3 w-36 h-8 ">
+                            <img className="w-full h-full" src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" alt="logo" />
                     </div>
 
                     <div className=" flex  container mx-auto items-center w-3/4   bg-white shadow-md px-1 py-3 border border-gray-200 rounded">
@@ -36,7 +35,7 @@ const LargeNav = ()=>{
                             <span><IoMdArrowDropdown /></span>
                         </div>
 
-                        <div className="flex items-center w-full gap-2">
+                        <div className="flex items-center w-full gap-1">
                             <BsSearch className="text-gray-400 text-lg"/>
                             <input className="focus:outline-none focus:ring-0 w-full" type="search"  placeholder="Search for restaurant,cuisine or a dish" />
                         </div>
@@ -53,12 +52,12 @@ const LargeNav = ()=>{
 
 const Navbar =()=>{
     return <>
-    <nav className="py-3 md:py-5 px-2 flex bg-white shadow  items-center  ">
+    <nav className="py-3 md:py-5 px-2 bg-white shadow  ">
         {/* mobile devices */}
         <MobileNav />
 
         {/* lg and md devices */}
-        <LargeNav />
+        <LargeNav/>
     </nav>
     </>
 }
