@@ -4,7 +4,7 @@ import Slider from "react-slick";
 //component
 import PictureCarousal from "../PictureCarousal";
 import { PrevArrow,NextArrow } from "../carousalArrows";
-const DiningCarousal  = ()=>{
+const NightlifeCarousal  = ()=>{
 
     const settings = {
         infinite: false,
@@ -40,6 +40,7 @@ const DiningCarousal  = ()=>{
             }
           }
         ]
+        
     }
     return <> 
         <div className="w-full">
@@ -56,4 +57,4 @@ const DiningCarousal  = ()=>{
 }
 
 
-export default DiningCarousal ;
+export default NightlifeCarousal ;
