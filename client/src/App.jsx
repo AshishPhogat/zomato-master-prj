@@ -3,8 +3,7 @@ import HomeLayoutHOC from "./HOC/home.hoc";
 
 //components
 import Temp from "./Components/temp";
-import Master from "./Components/Navbar/master";
-
+import Master from "./Components/master.jsx";
 
 function App() {
   return<>

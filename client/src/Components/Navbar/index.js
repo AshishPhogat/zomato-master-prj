@@ -52,7 +52,7 @@ const LargeNav = ()=>{
 
 const Navbar =()=>{
     return <>
-    <nav className="py-3 md:py-5 px-2 bg-white shadow  ">
+    <nav className="py-3 md:py-5 px-2 bg-white shadow-md lg:shadow-none  ">
         {/* mobile devices */}
         <MobileNav />
 

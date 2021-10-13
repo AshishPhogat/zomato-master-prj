@@ -112,7 +112,7 @@ const LargetTab = ()=>{
                         return (
                             <>
                                <Link to={item.id}>
-                                    <div className={`flex items-center gap-3 ${item.isActive && "border-b-2 border-zomato-300 w-full ease-in duration-100"}`}>
+                                    <div className={`flex items-center h-20  gap-3 ${item.isActive && "border-b-2 border-zomato-300 w-full transition ease-in duration-100"}`}>
                                     <div className={`w-16 h-16 p-4 ${item.isActive ? "relative" : ""} bg-${item.isActive ? item.activeColor : "gray"}-100 rounded-full`}>
                                         <img className="w-full h-full " src={item.isActive?`${item.activeImg}`:`${item.inactiveImg}`} alt="delivery" />
                                     </div>
@@ -132,7 +132,7 @@ const LargetTab = ()=>{
 
 const FoodTab = ()=>{
     return <>
-        <div>
+        <div className="container mx-auto  lg:px-20 pt-8">
             <MobileTab />
             <LargetTab />
         </div>
