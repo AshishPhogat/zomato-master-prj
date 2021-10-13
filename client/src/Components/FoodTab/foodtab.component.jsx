@@ -132,7 +132,7 @@ const LargetTab = ()=>{
 
 const FoodTab = ()=>{
     return <>
-        <div className="container mx-auto  lg:px-20 pt-8">
+        <div className="container mx-auto my-5 lg:px-20 pt-8">
             <MobileTab />
             <LargetTab />
         </div>
