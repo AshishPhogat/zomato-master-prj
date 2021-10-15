@@ -1,8 +1,12 @@
 import React from "react";
+import {useLocation} from "react-router-dom";
+
 
 const Temp = (props)=>{
+   const loc = useLocation();
+
    return <>
-   <h1 className={props.className}>This is a temp component</h1>
+      <div>Hello this is a temp component {loc.pathname}</div>
    </>
 }
 

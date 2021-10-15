@@ -47,7 +47,7 @@ const TabContainer = ()=>{
     },];
 
     return <>
-        <div className="flex items-center gap-3 md:gap-4 lg:gap-7 border-b-2  overflow-x-scroll">
+        <div className="flex items-center  gap-3 md:gap-4 lg:gap-7 border-b-2  overflow-x-scroll">
             {tabs.map((tab)=>{
                 return <Tab {...tab}  key={`123${tab.route}`} />
             })}
