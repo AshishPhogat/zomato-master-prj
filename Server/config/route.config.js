@@ -4,7 +4,7 @@ dotenv.config({
   path: require("path").resolve(__dirname, "../.env"),
 });
 // Database Model
-import { UserModel } from "../database/user";
+import { UserModel } from "../Database/allModels";
 
 const JWTStratergy = JwtPassport.Strategy;
 const ExtractJwt = JwtPassport.ExtractJwt;

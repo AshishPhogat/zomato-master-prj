@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import passport from "passport";
 
 // Models
-import { UserModel } from "../../database/user";
+import { UserModel } from "../../Database/user";
 
 //validation
 import { validateSignup, validateSignin } from "../../Validation/auth";

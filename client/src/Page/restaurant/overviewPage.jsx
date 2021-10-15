@@ -3,13 +3,15 @@ import { Link,useParams } from "react-router-dom";
 import {IoMdArrowDropright} from  "react-icons/io";
 import Slider from "react-slick";
 import ReactStars from "react-rating-stars-component";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+
 
 //component
 import MenuCollection from "../../Components/Restaurant/menuCollections";
 import MenuSimilarRestaurantCard from "../../Components/Restaurant/MenuSimilarRestaurantCard";
 import { NextArrow,PrevArrow } from "../../Components/carousalArrows";
 import ReviewCard from "../../Components/Restaurant/Reviews/reviewCard";
+import MapView from "../../Components/Restaurant/mapView";
+
 
 
 const OverviewPage = ()=>{
@@ -23,16 +25,41 @@ const OverviewPage = ()=>{
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 2,
+        slidesToShow: 2,
+        slidesToScroll: 1,
         initialSlide: 0,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow:2,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 2,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            },]
       };
     return <> 
        <div className="container mx-auto w-full ">
             <div className="flex relative flex-col p-2 md:flex-row  reltive">
-                <div className="w-9/12 p-3 ">
+                <div className="w-full md:w-8/12 p-3 ">
                     <h2 className="font-semibold text-lg md:text-xl">About this place</h2>
                     <div className="flex justify-between items-center">
                         <h4 className="text-lg font-medium">Menu</h4> 
@@ -56,7 +83,7 @@ const OverviewPage = ()=>{
                     <h6>₹100 for one (approx.)</h6>
                     <small>Exclusive of applicable taxes and charges</small>
                     </div>
-                    <div className="container mx-auto pr-8 w-full">
+                    <div className="container mx-auto my-5 pr-8 w-full">
                         <Slider {...settings} >
                             <MenuSimilarRestaurantCard image="https://b.zmtcdn.com/data/pictures/8/18578798/1e4edff7ceed9a740575aeceff032e92_featured_v2.jpg?output-format=webp" title="TBC Sky Lounge"/>
                             <MenuSimilarRestaurantCard image="https://b.zmtcdn.com/data/pictures/8/18578798/1e4edff7ceed9a740575aeceff032e92_featured_v2.jpg?output-format=webp" title="TBC Sky Lounge"/>
@@ -79,28 +106,8 @@ const OverviewPage = ()=>{
                     <ReviewCard />
                     <ReviewCard />
                 </div>
-                <aside className="w-3/12 h-96 sticky top-60 my-4  p-3 rounded-lg z-10 bg-white-200" style={{"box-shadow": "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"}}>
-                    <h4 className="text-xl font-normal">Call</h4> 
-                    <div className="my-2">
-                        <h5 className="text-zomato-200 font-base">+919742572268</h5>
-                        <h5 className="text-zomato-200 font-base">+917406322688</h5>
-                        <h5 className="text-zomato-200 font-base">+919742524178</h5>
-                    </div>
-
-                    <h4 className="text-xl font-normal">Directions</h4> 
-                    <div className="w-full h-48">
-                        <MapContainer center={[13.214621251782804, 77.73287444245135]} zoom={13} scrollWheelZoom={false}>
-                            <TileLayer
-                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            <Marker position={[13.214621251782804, 77.73287444245135]}>
-                                <Popup>
-                                A pretty CSS3 popup. <br /> Easily customizable.
-                                </Popup>
-                            </Marker>
-                        </MapContainer>
-                    </div>
+                <aside className="hidden w-full md:w-4/12 md:h-1/4 md:flex flex-col  md:sticky top-60 my-4 gap-1 p-3 rounded-lg z-10 bg-white-200rounded-lg" style={{"box-shadow": "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"}}>
+                    <MapView title="SMOOR" phoneNumber={["+919742572268","+917406322688","+919742524178"]} mapLocation={[13.214621251782804, 77.73287444245135]} address="12/1, Swami Vivekananda Road, Jayaraj Nagar, Ulsoor, Bangalore"/>
                     
                 </aside>
             </div>

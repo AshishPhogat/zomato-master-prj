@@ -1,8 +1,10 @@
 import googleOAuth from "passport-google-oauth20";
 import dotenv from "dotenv";
+
 dotenv.config({
   path: require("path").resolve(__dirname, "../.env"),
 });
+
 import { UserModel } from "../database/allModels";
 
 const GoogleStrategy = googleOAuth.Strategy;

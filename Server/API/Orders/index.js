@@ -4,7 +4,7 @@ import { get } from "mongoose";
 import passport from "passport";
 
 //Database
-import {OrderModel} from "../../Database/orders";
+import {OrderModel} from "../../Database/allModels";
 
 const Router = express.Router();
 
