@@ -1,66 +1,59 @@
 import React from "react";
-import {AiTwotoneStar} from "react-icons/ai";
-import {TiStarOutline} from "react-icons/ti";
-import {FaDirections} from "react-icons/fa";
-import {BsBookmarkPlus} from "react-icons/bs";
-import {RiShareForwardLine} from "react-icons/ri";
+import { TiStarOutline } from "react-icons/ti";
+import { RiDirectionLine, RiShareForwardLine } from "react-icons/ri";
+import { BiBookmarkPlus } from "react-icons/bi";
 
-
-//component
+// components
 import RestaurantNavbar from "../Components/Navbar/restaurantNavbar";
 import ImageGrid from "../Components/Restaurant/ImageGrid";
-import RestaurantInfo from "../Components/Restaurant/restaurantinfo";
 import InfoButtons from "../Components/Restaurant/infoButton";
-import TabContainer  from "../Components/Restaurant/Tabs";
+import RestaurantInfo from "../Components/Restaurant/restaurantinfo";
+import TabContainer from "../Components/Restaurant/Tabs";
+import CartContainer from "../Components/Cart/CartContainer";
 
-
-
-
-const RestaurantLayout = (props)=>{
-    const images=["https://b.zmtcdn.com/data/pictures/1/52971/ce5427a36e10f1bd0d4683593a1e6cff.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
-    "https://b.zmtcdn.com/data/pictures/1/52971/ce5427a36e10f1bd0d4683593a1e6cff.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
-    "https://b.zmtcdn.com/data/pictures/1/52971/ce5427a36e10f1bd0d4683593a1e6cff.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
-    "https://b.zmtcdn.com/data/pictures/1/52971/ce5427a36e10f1bd0d4683593a1e6cff.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
-    "https://b.zmtcdn.com/data/pictures/1/52971/ce5427a36e10f1bd0d4683593a1e6cff.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",  
-];
-    return <> 
-            <RestaurantNavbar />
-        <div className="container relative mx-auto  my-5 lg:px-20">
-            <ImageGrid image={images} />   
-
-            <div className="md:sticky top-0 bg-white py-4 px-4 z-20">
-            <RestaurantInfo name="SMOOR" restaurantRating="3.5" deliveryRating="3.2" cuisine={["Desserts", "Beverages", "Bakery", "Shake"]}  address="1 MG Road Mall, MG Road, Bangalore"/>
-            </div>
-
-        <div className="relative px-2 ">
-
-                    <div className="my-4  relative ">
-                        <div className="md:sticky flex flex-wrap gap-3 items-center">
-                            <InfoButtons isActive >
-                                <TiStarOutline /> Add Review
-                            </InfoButtons>
-                            <InfoButtons  >
-                            <FaDirections className="text-red-500 text-lg" /> Direction
-                            </InfoButtons>
-                            <InfoButtons  >
-                                <BsBookmarkPlus className="text-red-500 text-lg" /> Bookmark
-                            </InfoButtons>
-                            <InfoButtons  >
-                                <RiShareForwardLine className="text-red-500 text-lg"  /> Share
-                            </InfoButtons>
-                        </div>
-                    </div>
-                        <div className="md:sticky  md:bg-white z-20  top-48  ">
-                            <TabContainer >
-                            </TabContainer>
-                        </div>
-
-
-                   <div className="relative"> {props.children}</div>
+const RestaurantLayout = (props) => {
+  return (
+    <>
+      {" "}
+      <RestaurantNavbar />
+      <div className="container mx-auto px-4 lg:px-20 ">
+        <ImageGrid
+          images={[
+            "https://b.zmtcdn.com/data/pictures/2/18621252/f737723f080910e46c451c51b9bbd717.jpg?output-format=webp",
+            "https://b.zmtcdn.com/data/pictures/2/18621252/f737723f080910e46c451c51b9bbd717.jpg?output-format=webp",
+            "https://b.zmtcdn.com/data/pictures/2/18621252/f737723f080910e46c451c51b9bbd717.jpg?output-format=webp",
+            "https://b.zmtcdn.com/data/pictures/2/18621252/f737723f080910e46c451c51b9bbd717.jpg?output-format=webp",
+          ]}
+        />
+        <RestaurantInfo
+          name="Mumbai Xpress"
+          restaurantRating="3.5"
+          deliveryRating="3.2"
+          cuisine="North Indian, Fast Food, Chinese, Street Food"
+          address="Basavanagudi, Bangalore"
+        />
+        <div className="my-4 flex flex-wrap gap-3">
+          <InfoButtons isActive>
+            <TiStarOutline /> Add Review
+          </InfoButtons>
+          <InfoButtons>
+            <RiDirectionLine /> Direction
+          </InfoButtons>
+          <InfoButtons>
+            <BiBookmarkPlus /> Bookmark
+          </InfoButtons>
+          <InfoButtons>
+            <RiShareForwardLine /> Share
+          </InfoButtons>
         </div>
+        <div className="my-10">
+          <TabContainer></TabContainer>
         </div>
-        
+        <div className="relative">{props.children}</div>
+      </div>
+      <CartContainer />
     </>
-}
+  );
+};
 
-export default RestaurantLayout ;
+export default RestaurantLayout;
