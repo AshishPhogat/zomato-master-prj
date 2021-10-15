@@ -1,17 +1,16 @@
 import joi from "joi";
 
-export const validateRestaurantId = (resId)=>{
-    const schema = joi.Object({
-       _id : joi.string().required(),
-    });
+export const ValidateRestaurantId = (resId) => {
+  const Schema = joi.object({
+    _id: joi.string().required(),
+  });
 
-    return schema.validateAsync(resId);
-}
+  return Schema.validateAsync(resId);
+};
+export const Validatecategory = (category) => {
+  const Schema = joi.object({
+    category: joi.string().required(),
+  });
 
-export const validateCategory = (category)=>{
-    const schema = joi.Object({
-       category : joi.string().required(),
-    });
-
-    return schema.validateAsync(category);
-}
+  return Schema.validateAsync(category);
+};

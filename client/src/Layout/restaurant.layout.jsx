@@ -32,23 +32,25 @@ const RestaurantLayout = (props)=>{
             <RestaurantInfo name="SMOOR" restaurantRating="3.5" deliveryRating="3.2" cuisine={["Desserts", "Beverages", "Bakery", "Shake"]}  address="1 MG Road Mall, MG Road, Bangalore"/>
             </div>
 
-        <div className="relative ">
+        <div className="relative  ">
 
-                    <div className="my-4 flex flex-wrap gap-3 items-center">
-                        <InfoButtons isActive >
-                            <TiStarOutline /> Add Review
-                        </InfoButtons>
-                        <InfoButtons  >
-                        <FaDirections className="text-red-500 text-lg" /> Direction
-                        </InfoButtons>
-                        <InfoButtons  >
-                            <BsBookmarkPlus className="text-red-500 text-lg" /> Bookmark
-                        </InfoButtons>
-                        <InfoButtons  >
-                            <RiShareForwardLine className="text-red-500 text-lg"  /> Share
-                        </InfoButtons>
+                    <div className="my-4 relative ">
+                        <div className="sticky flex flex-wrap gap-3 items-center">
+                            <InfoButtons isActive >
+                                <TiStarOutline /> Add Review
+                            </InfoButtons>
+                            <InfoButtons  >
+                            <FaDirections className="text-red-500 text-lg" /> Direction
+                            </InfoButtons>
+                            <InfoButtons  >
+                                <BsBookmarkPlus className="text-red-500 text-lg" /> Bookmark
+                            </InfoButtons>
+                            <InfoButtons  >
+                                <RiShareForwardLine className="text-red-500 text-lg"  /> Share
+                            </InfoButtons>
+                        </div>
                     </div>
-                        <div className="sticky bg-white z-20 top-40 ">
+                        <div className="sticky  bg-white z-20 top-40 ">
                             <TabContainer >
                             </TabContainer>
                         </div>

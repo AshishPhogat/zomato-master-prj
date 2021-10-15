@@ -19,9 +19,12 @@ import Foods from "./API/Food";
 import Images from "./API/Image";
 import Reviews from "./API/Reviews";
 import Users from "./API/User";
+import MailService from "./API/Mail";
+import Menu from "./API/Menu" ;
 
 // Database connection
 import ConnectDB from "./database/connection";
+import Mailgun from "mailgun-js";
 
 const zomato = express();
 
@@ -44,6 +47,8 @@ zomato.use("/foods",Foods);
 zomato.use("/image",Images);
 zomato.use("/reviews",Reviews);
 zomato.use("/user",Users);
+zomato.use("/mail", MailService);
+zomato.use("/menu","Menu");
 
 
 zomato.get("/", (req, res) => res.json({ message: "Setup success" }));
