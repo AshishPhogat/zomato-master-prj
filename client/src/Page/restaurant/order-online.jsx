@@ -1,35 +1,49 @@
 import React from "react";
-import MenuCollection from "../../Components/Restaurant/menuCollections";
-import {AiOutlineCompass} from "react-icons/ai";
-import {BiTimeFive} from "react-icons/bi";
+import { AiOutlineCompass } from "react-icons/ai";
+import { BiTimeFive } from "react-icons/bi";
 
-//component
-import FloatMenuButton from "../../Components/Restaurant/OrderOnline/FloatMenuButton";
+// components
+import FloatMenuBtn from "../../Components/Restaurant/OrderOnline/FloatMenuButton";
 import MenuListContainer from "../../Components/Restaurant/OrderOnline/MenuListContainer";
-import FoodItems from "../../Components/Restaurant/OrderOnline/FoodItems";
+import FoodList from "../../Components/Restaurant/OrderOnline/FoodList";
 
-const OrderOnline =()=>{
-    return <>
-        <div className="flex w-full">
-            <aside className="hidden md:block w-1/4 border-r-2 overflow-y-scroll border-gray-200 h-screen"> 
-            <MenuListContainer />
-            <MenuListContainer />
-            <MenuListContainer />
-            </aside>
-            <div className="w-full px-3 md:w-3/4 ">
-                <h2 className="text-3xl ">Order Online </h2> 
-                <h4 className="flex items-center gap-2 font-light text-gray-500">
-                <AiOutlineCompass /> Live Track Your Order | <BiTimeFive /> 45 min
-                </h4>
 
-                <h2 className="text-3xl z-30 md:sticky top-56 bg-white border-b border-gray-300 font-base py-3">Recommended </h2> 
-                <section className=" pt-2">
-                    <FoodItems price="1000" rating={3} title="Andhra Mutton Biryani Family Pack" image="https://b.zmtcdn.com/data/dish_photos/612/2998605f31f134c65bd12e1367ea6612.jpg?fit=around|130:130&crop=130:130;*,*" description="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
-                </section>
-            </div>           
+const OrderOnline = () => {
+  return (
+    <>
+      <div className="w-full h-screen flex ">
+        <aside className="hidden md:flex flex-col gap-3 border-r overflow-y-scroll border-gray-200 h-screen w-1/4">
+          <MenuListContainer />
+          <MenuListContainer />
+        </aside>
+        <div className="w-full  px-3 md:w-3/4">
+          <div className="pl-3 mb-4">
+            <h2 className="text-xl font-semibold">Order Online</h2>
+            <h4 className="flex items-center gap-2 font-light text-gray-500">
+              <AiOutlineCompass /> Live Track Your Order | <BiTimeFive /> 45 min
+            </h4>
+          </div>
+          <section className="flex  h-screen overflow-y-scroll flex-col gap-3 md:gap-5">
+            <FoodList
+              title="Recommended"
+              items={[
+                {
+                  price: "1000",
+                  rating: 3,
+                  description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem dicta repellendus sit cumque eum odio animi doloribus quo voluptatem aut ipsam, consectetur non minima rerum eligendi magnam aspernatur culpa provident?",
+                  title: "Yummy food",
+                  image:
+                    "https://b.zmtcdn.com/data/dish_photos/839/62575c08ce26635e3f48b3642805d839.jpg?output-format=webp",
+                },
+              ]}
+            />
+          </section>
         </div>
-            <FloatMenuButton />
+      </div>
+      <FloatMenuBtn />
     </>
-}
+  );
+};
 
-export default OrderOnline ;
+export default OrderOnline;

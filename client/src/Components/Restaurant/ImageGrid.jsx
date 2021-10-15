@@ -4,7 +4,7 @@ import {AiOutlineCamera} from "react-icons/ai";
 
 const ImageGrid = (props)=>{
     return <> 
-            <div className="w-full h-60 md:hidden">
+            <div className="w-full px-2 h-60 md:hidden">
                 <img className="w-full h-full rounded-lg " src={props.image[0]} alt="restaurant image" /> 
             </div> 
              

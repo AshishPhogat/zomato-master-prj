@@ -28,13 +28,13 @@ const RestaurantLayout = (props)=>{
         <div className="container relative mx-auto  my-5 lg:px-20">
             <ImageGrid image={images} />   
 
-            <div className="md:sticky top-0 bg-white py-2 px-4 z-20">
+            <div className="md:sticky top-0 bg-white py-4 px-4 z-20">
             <RestaurantInfo name="SMOOR" restaurantRating="3.5" deliveryRating="3.2" cuisine={["Desserts", "Beverages", "Bakery", "Shake"]}  address="1 MG Road Mall, MG Road, Bangalore"/>
             </div>
 
         <div className="relative px-2 ">
 
-                    <div className="my-4 relative ">
+                    <div className="my-4  relative ">
                         <div className="md:sticky flex flex-wrap gap-3 items-center">
                             <InfoButtons isActive >
                                 <TiStarOutline /> Add Review
@@ -50,12 +50,13 @@ const RestaurantLayout = (props)=>{
                             </InfoButtons>
                         </div>
                     </div>
-                        <div className="md:sticky  bg-white z-20 top-44 md:top-40 ">
+                        <div className="md:sticky  md:bg-white z-20  top-48  ">
                             <TabContainer >
                             </TabContainer>
                         </div>
 
-                    {props.children}
+
+                   <div className="relative"> {props.children}</div>
         </div>
         </div>
         
