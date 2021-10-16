@@ -10,6 +10,7 @@ import FoodList from "../../Components/Restaurant/OrderOnline/FoodList";
 
 // redux actions
 import { getFoodList } from "../../Redux/Reducer/Food/Food.action";
+import { addCart } from "../../Redux/Reducer/Cart/Cart.action";
 
 const OrderOnline = () => {
 
