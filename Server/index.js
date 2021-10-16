@@ -21,6 +21,7 @@ import Reviews from "./API/Reviews";
 import Users from "./API/User";
 import MailService from "./API/Mail";
 import Menu from "./API/Menu" ;
+import Payments from "./API/Payments";
 
 // Database connection
 import ConnectDB from "./database/connection";
@@ -35,6 +36,7 @@ zomato.use(helmet());
 zomato.use(cors());
 zomato.use(passport.initialize());
 zomato.use(passport.session());
+zomato.use("/payments", Payments);
 
 // passport cofiguration
 googleAuthConfig(passport);
