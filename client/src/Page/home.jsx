@@ -17,8 +17,8 @@ const Home = ()=>{
 
     useEffect(() => {
       dispatch(getRestaurant());
-    }, []);
-    
+    }, [dispatch]);
+
     return <>
         {type === "delivery" && <Delivery />}
         {type === "diningOut" && <Dining />}

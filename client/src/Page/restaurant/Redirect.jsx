@@ -6,7 +6,7 @@ const Redirect = () => {
   const { id } = useParams();
   useEffect(() => {
     history.push(`/restaurant/${id}/overview`);
-  }, []);
+  }, [history,id]);
 
   return <div></div>;
 };

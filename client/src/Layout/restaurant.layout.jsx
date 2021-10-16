@@ -18,7 +18,6 @@ import { getSpecificRestaurant } from "../Redux/Reducer/restaurant/restaurant.ac
 import { getImage } from "../Redux/Reducer/Image/Image.action";
 
 const RestaurantLayout = (props) => {
-
   const [restaurant, setRestaurant] = useState({
     images: [],
     name: "",
@@ -39,18 +38,16 @@ const RestaurantLayout = (props) => {
         setRestaurant((prev) => ({ ...prev, ...data.payload.image }))
       );
     });
-  }, []);
+  }, [id,dispatch]);
 
   return (
     <>
       {" "}
       <RestaurantNavbar />
       <div className="container mx-auto px-4 lg:px-20 ">
-
-      <ImageGrid images={restaurant.images} />
-
+        <ImageGrid images={restaurant.images} />
         <RestaurantInfo
-           name={restaurant?.name}
+          name={restaurant?.name}
           restaurantRating={restaurant?.rating || 0}
           deliveryRating={restaurant?.rating || 0}
           cuisine={restaurant?.cuising}

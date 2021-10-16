@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { IoMdArrowDropright } from "react-icons/io";
 import Slider from "react-slick";
 import { useSelector, useDispatch } from "react-redux";   
 import ReactStars from "react-rating-stars-component";
@@ -35,7 +37,7 @@ const OverviewPage = ()=>{
             setMenuImages(images);
           });
         }
-      }, []);
+      }, [dispatch,reduxState]);
 
     const settings = {
         infinite: true,
