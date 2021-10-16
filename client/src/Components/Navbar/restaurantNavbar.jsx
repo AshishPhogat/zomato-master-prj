@@ -4,9 +4,10 @@ import { HiLocationMarker } from "react-icons/hi";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { BsSearch } from "react-icons/bs";
 import {AiOutlineArrowLeft} from "react-icons/ai";
+import {RiSearch2Line} from "react-icons/ri";
 
 //components
-import SignIn from "../Auth/Signinn";
+import SignIn from "../Auth/Signin";
 import SignUp from "../Auth/SignUp";
 
 
