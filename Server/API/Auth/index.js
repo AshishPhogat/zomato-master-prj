@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import passport from "passport";
 
 // Models
-import { UserModel } from "../../Database/user";
+import { UserModel } from "../../Database/allModels";
 
 //validation
 import { validateSignup, validateSignin } from "../../Validation/auth";
@@ -20,11 +20,8 @@ Access    Public
 Method    POST  
 */
 Router.post("/signup", async (req, res) => {
-
-
   try {
-  //validating the user input data
-   await validateSignup(req.body.credentials);
+    await ValidateSignup(req.body.credentials);
 
     await UserModel.findByEmailAndPhone(req.body.credentials);
     const newUser = await UserModel.create(req.body.credentials);
@@ -44,8 +41,8 @@ Method    POST
 */
 Router.post("/signin", async (req, res) => {
   try {
-    await validateSignin(req.body.credentials);
-    
+    await ValidateSignin(req.body.credentials);
+
     const user = await UserModel.findByEmailAndPassword(req.body.credentials);
 
     const token = user.generateJwtToken();

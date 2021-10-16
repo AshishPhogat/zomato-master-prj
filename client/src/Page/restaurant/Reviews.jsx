@@ -1,38 +1,48 @@
-import React,{useState} from "react";
-import ReactStarts from "react-rating-stars-component";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 //component
 import ReviewCard from "../../Components/Restaurant/Reviews/reviewCard";
 import AddReviewCard from "../../Components/Restaurant/Reviews/AddReviewCard";
 
+import { getReviews } from "../../Redux/Reducer/Reviews/review.action";
 
 const Reviews = ()=>{
+    const [reviews, setReviews] = useState([]);
 
-    const [reviews,setReviews] = useState(["",""]);
-    const handleRating = (value)=> console.log(value);
-
-    return <> 
-
-        <div className="w-full flex px-4 flex-col md:flex-row relative">
-
-        <div className="w-full md:w-8/12 flex flex-col gap-3">
+    const reduxState = useSelector(
+      (globalStore) => globalStore.restaurant.selectedRestaurant.restaurant
+    );
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      if (reduxState) {
+        dispatch(getReviews(reduxState?._id)).then((data) =>
+          setReviews(data.payload.reviews)
+        );
+      }
+    }, []);
+  
+    return (
+      <>
+        <div className="w-full flex flex-col md:flex-row relative">
+          <div className="w-full md:w-8/12 flex flex-col gap-3">
             <div className="md:hidden">
-                <AddReviewCard />
+              <AddReviewCard />
             </div>
-                {
-                    reviews.map((review)=>{
-                        return <ReviewCard {...review} />
-                    })
-                }
-        </div>
-
-        <aside className="hidden w-full ml-3 md:w-4/12 md:h-1/4 md:flex flex-col  md:sticky top-68 my-4 gap-1 p-3 rounded-lg z-10 bg-white-200rounded-lg" style={{"box-shadow": "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"}}>
+            {reviews.map((review) => (
+              <ReviewCard {...review} />
+            ))}
+          </div>
+          <aside
+            style={{ height: "fit-content" }}
+            className="hidden md:flex items-start md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md flex flex-col gap-3"
+          >
             <AddReviewCard />
-
-        </aside>
+          </aside>
         </div>
-    
-    </>
-}
-
-export default Reviews ;
+      </>
+    );
+  };
+  
+  export default Reviews;
