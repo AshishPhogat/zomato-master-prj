@@ -1,7 +1,6 @@
-import React from "react";
-import { Link,useParams } from "react-router-dom";
-import {IoMdArrowDropright} from  "react-icons/io";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { useSelector, useDispatch } from "react-redux";   
 import ReactStars from "react-rating-stars-component";
 
 
@@ -12,15 +11,31 @@ import { NextArrow,PrevArrow } from "../../Components/carousalArrows";
 import ReviewCard from "../../Components/Restaurant/Reviews/reviewCard";
 import MapView from "../../Components/Restaurant/mapView";
 
-
+import { getImage } from "../../Redux/Reducer/Image/Image.action";
 
 const OverviewPage = ()=>{
+  const [menuImage, setMenuImages] = useState({ images: [] });
+
     const {id} = useParams();
 
     const ratingChanged = (newRating) => {
         console.log(newRating);
       };
-      
+     
+      const reduxState = useSelector(
+        (globalStore) => globalStore.restaurant.selectedRestaurant.restaurant
+      );
+      const dispatch = useDispatch();
+    
+      useEffect(() => {
+        if (reduxState) {
+          dispatch(getImage(reduxState?.menuImage)).then((data) => {
+            const images = [];
+            data.payload.image.images.map(({ location }) => images.push(location));
+            setMenuImages(images);
+          });
+        }
+      }, []);
 
     const settings = {
         infinite: true,
@@ -56,6 +71,7 @@ const OverviewPage = ()=>{
               }
             },]
       };
+
     return <> 
        <div className="container mx-auto w-full ">
             <div className="flex relative flex-col p-2 md:flex-row  reltive">
@@ -68,12 +84,8 @@ const OverviewPage = ()=>{
                         </Link >
                         
                     </div>
-                    <div className="flex flex-wrap gap-3">
-                            <MenuCollection menuTitle="Menu" pages="3" image={[
-                              "https://b.zmtcdn.com/data/menus/971/52971/98e728872b6f968251d239411455d54f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
-                              "https://b.zmtcdn.com/data/menus/971/52971/98e728872b6f968251d239411455d54f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
-                              "https://b.zmtcdn.com/data/menus/971/52971/98e728872b6f968251d239411455d54f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
-                            ]} />
+                    <div className="flex flex-wrap gap-3 my-4">
+                    <MenuCollection menuTitle="Menu" pages="3" image={menuImage} />
                     </div>
                     <h4 className="text-lg font-medium">Cuisines</h4> 
                     <div className="flex flex-wrap gap-2">
